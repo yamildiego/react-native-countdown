@@ -1,36 +1,38 @@
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, ViewStyle, TextStyle } from "react-native";
+import TimeLib from "yd-time-lib";
+// import CountdownLib from "yd-countdown-lib";
+import { useCountdown } from "./useCountdown ";
 
-const Countdown = (props: number) => {
-  // const { style, styleText, from } = props;
-  // const [current, setCurrent] = useState(from);
-  // const [time, setTime] = useState({});
+const Countdown = (props: {
+  from: number;
+  to?: number;
+  running: boolean;
+  format?: string;
+  style?: ViewStyle | undefined;
+  styleText?: TextStyle | undefined;
+}) => {
+  const currentMilliseconds = useCountdown(props.from, props.to == undefined ? 0 : props.to);
+  const [formatString, setFormatString] = useState(props.format == undefined ? "{i}:{s}" : props.format);
+  const styleMerge: ViewStyle = props.style !== undefined ? { ...props.style } : {};
+  const styleTextMerge: TextStyle = props.styleText !== undefined ? { ...props.styleText } : {};
 
-  // const { style, styleText, running, from, to, format } = props;
-
-  return <View></View>;
+  return (
+    <View style={[styles.container, styleMerge]}>
+      <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
+    </View>
+  );
 };
-
-// <View style={{ ...styles.container, ...style }}>
-//   <Text style={{ ...styles.text, ...styleText }}>{new Time(current).format("i:s")}</Text>
-// </View>
-// useEffect(() => {
-//   if (!props.running) {
-//   }
-
-// import React, { useState, useEffect } from "react";
-// import { Countdown } from "yd-countdown-lib";
-// import Time from "yd-time-lib";
-//   // const   new Countdown(milliseconds_from: number = 10000, milliseconds_to: number = 0, callback: () => void = () => {});
-//   // run();
-// }, [props.running, current]);
 
 const styles = StyleSheet.create({
   container: {
-    width: 80,
+    backgroundColor: "white",
+    padding: 10,
   },
   text: {
+    textAlign: "center",
     fontSize: 20,
   },
 });
 
-export default Countdown;
+module.exports = Countdown;

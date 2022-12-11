@@ -1,10 +1,10 @@
 {
-  "name": "react-native-countdown",
+  "name": "yd-react-native-countdown",
   "version": "1.0.0",
   "description": "",
-  "main": "react-native-countdown.tsx",
   "scripts": {
-    "build": "tsc ./src/react-native-countdown.tsx --target es2016 --outDir react-native-countdown --declaration && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",
+    "build": "tsc --project tsconfig.json",
+    "build_2": "tsc ./src/react-native-countdown.tsx --target es2016 --skipLibCheck true --jsx react-jsx --outDir  react-native-countdown --declaration && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",
     "start": "npx webpack && node ./dist/react-native-countdown.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,15 +16,15 @@
   "author": "Yamil Diego",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.6",
+    "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
     "@types/react": "~18.0.14",
-    "@types/react-native": "^0.70.8",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-react-native-web": "^0.18.10",
+    "@types/react-native": "~0.70.6",
+    "@types/react-redux": "^7.1.24",
+    "babel-loader": "^9.1.0",
     "ts-loader": "^9.4.1",
-    "typescript": "^4.9.3",
+    "typescript": "^4.6.3",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
@@ -33,7 +33,7 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-web": "^0.18.10",
-    "yd-countdown-lib": "^1.0.6",
-    "yd-time-lib": "^1.0.1"
+    "yd-countdown-lib": "^1.0.9",
+    "yd-time-lib": "^1.0.3"
   }
 }

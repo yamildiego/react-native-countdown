@@ -2,11 +2,11 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: path.join(__dirname, "src/react-native-countdown.tsx"),
+  entry: "./src/react-native-countdown.tsx",
   output: {
     filename: "react-native-countdown.js",
     path: path.join(__dirname, "/dist"),
-    library: "our-components-library",
+    // library: "our-components-library",
     libraryTarget: "umd",
     umdNamedDefine: true,
     globalObject: "this",
@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)?$/,
-        include: path.resolve(__dirname, "src"),
+        include: path.resolve(__dirname),
         exclude: /node_modules/,
         use: [
           {
@@ -23,7 +23,6 @@ module.exports = {
             options: {
               cacheDirectory: true,
               presets: ["module:metro-react-native-babel-preset"],
-              plugins: ["react-native-web"],
             },
           },
           // {

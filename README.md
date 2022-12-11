@@ -16,7 +16,7 @@ Here is an example of a basic app using React Native Countdown:
 import Countdown from "yd-react-native-countdown";
 
 // Countdown 50 seconds to 2 seconds
-<Countdown from={50000} to-={2000} style={{ backgroundColor: "#ffffff88" }} isRunning={isRunning} />;
+<Countdown from={50000} to={2000} style={{ backgroundColor: "#ffffff88" }} isRunning={isRunning} />;
 ```
 
 ## React Native Countdown Props

@@ -1,26 +1,37 @@
 {
   "name": "yd-react-native-countdown",
-  "version": "1.1.2",
-  "description": "",
+  "version": "1.2.6",
+  "description": "React Native Countdown component",
+  "license": "MIT",
+  "repository": "github:yamildiego/react-native-countdown",
   "main": "./react-native-countdown.js",
   "types": "./react-native-countdown.d.ts",
+  "engines": {
+    "node": ">=14"
+  },
   "dependencies": {
+    "yd-time-lib": "latest"
+  },
+  "devDependencies": {
     "browserify": "latest",
     "@types/browserify": "latest",
-    "typescript": "next",
+    "typescript": "next"
+  },
+  "peerDependencies": {
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
-    "react-native-web": "^0.18.10",
-    "yd-countdown-lib": "^1.0.6",
-    "yd-time-lib": "^1.0.1"
+    "react-native-web": "^0.18.10"
   },
   "scripts": {
+    "deploy": "npm publish --access=public",
     "test": "echo \"Error: no test specified.\" && exit 1"
   },
   "keywords": [
-    "Chess"
+    "react-native",
+    "component",
+    "countdown",
+    "simple"
   ],
-  "author": "Yamil Diego <yamildiego91@gmail.com> (https://yamildiego.com)",
-  "license": "MIT"
+  "author": "Yamil Diego <yamildiego91@gmail.com> (https://yamildiego.com)"
 }

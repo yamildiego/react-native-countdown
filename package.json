@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "build_2": "tsc ./src/react-native-countdown.tsx --target es2016 --skipLibCheck true --jsx react-jsx --outDir  react-native-countdown --declaration && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",
-    "start": "npx webpack && node ./dist/react-native-countdown.js",
+    "build": "tsc --project tsconfig.json && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -33,7 +31,6 @@
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-web": "^0.18.10",
-    "yd-countdown-lib": "^1.0.9",
-    "yd-time-lib": "^1.0.3"
+    "yd-time-lib": "^1.0.4"
   }
 }

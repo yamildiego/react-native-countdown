@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, ViewStyle, TextStyle } from "react-native";
 import TimeLib from "yd-time-lib";
-// import CountdownLib from "yd-countdown-lib";
 import { useCountdown } from "./useCountdown ";
 
 const Countdown = (props: {
-  from: number;
+  from?: number;
   to?: number;
-  running: boolean;
+  isRunning?: boolean;
   format?: string;
   style?: ViewStyle | undefined;
   styleText?: TextStyle | undefined;
 }) => {
-  const currentMilliseconds = useCountdown(props.from, props.to == undefined ? 0 : props.to);
+  const [running, setRunning] = useState(props.isRunning == undefined ? false : props.isRunning);
   const [formatString, setFormatString] = useState(props.format == undefined ? "{i}:{s}" : props.format);
   const styleMerge: ViewStyle = props.style !== undefined ? { ...props.style } : {};
   const styleTextMerge: TextStyle = props.styleText !== undefined ? { ...props.styleText } : {};
+  const currentMilliseconds = useCountdown(props.from, props.to, running);
+
+  useEffect(() => setRunning(props.isRunning == undefined ? false : props.isRunning), [props.isRunning]);
 
   return (
     <View style={[styles.container, styleMerge]}>

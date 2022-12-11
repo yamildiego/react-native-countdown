@@ -32,6 +32,9 @@ import Countdown from "yd-react-native-countdown";
 
 ## format
 
-To understand the different formats see the documentation for yd-time-lib
-
-https://www.npmjs.com/package/yd-time-lib#format
+| Character | Description                     | Example returned values |
+| --------- | ------------------------------- | ----------------------- |
+| {s}       | Seconds with zeros to the left  | 00 through 59           |
+| {i}       | Minutes with zeros to the left  | 00 to 59                |
+| {h}       | Hours with zeros to the left    | 01 through 12           |
+| {g}       | Hours without zeros to the left | 1 through 12            |

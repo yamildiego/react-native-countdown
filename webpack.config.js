@@ -1,25 +1,69 @@
-//webpack.config.js
 const path = require("path");
 
 module.exports = {
   mode: "development",
-  devtool: "inline-source-map",
-  entry: {
-    main: "./src/react-native-countdown.ts",
-  },
+  entry: path.join(__dirname, "src/react-native-countdown.tsx"),
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "react-native-countdown.js", // <--- Will be compiled to this single file
-  },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    filename: "react-native-countdown.js",
+    path: path.join(__dirname, "/dist"),
+    library: "our-components-library",
+    libraryTarget: "umd",
+    umdNamedDefine: true,
+    globalObject: "this",
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: "ts-loader",
+        test: /\.(ts|tsx)?$/,
+        include: path.resolve(__dirname, "src"),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              cacheDirectory: true,
+              presets: ["module:metro-react-native-babel-preset"],
+              plugins: ["react-native-web"],
+            },
+          },
+          // {
+          //   loader: "awesome-typescript-loader",
+          //   options: {
+          //     configFileName: "tsconfig.json",
+          //   },
+          // },
+        ],
+      },
+      {
+        test: /\.(gif|jpe?g|png|svg)$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            name: "[name].[ext]",
+            esModule: false,
+          },
+        },
       },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "react-native$": "react-native-web",
+    },
+  },
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React",
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM",
+    },
   },
 };

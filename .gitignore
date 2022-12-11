@@ -1,0 +1,7 @@
+node_modules
+lib
+.vscode
+dist
+react-native-countdown/*
+!react-native-countdown/package.json
+package-lock.json

@@ -8,7 +8,10 @@ const useCountdown = (p_callback: () => void, p_milliseconds_from?: number, p_mi
     const interval = setInterval(() => {
       if (isRunning) {
         if (currentMilliseconds > millisecondsTo) setCurrentMilliseconds(currentMilliseconds - 1000);
-        else p_callback();
+        else {
+          p_callback();
+          clearInterval(interval);
+        }
       } else clearInterval(interval);
     }, 1000);
 

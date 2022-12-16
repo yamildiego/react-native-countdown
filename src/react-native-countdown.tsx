@@ -8,6 +8,7 @@ const Countdown = (props: {
   to?: number;
   isRunning?: boolean;
   format?: string;
+  callback?: () => void;
   style?: ViewStyle | undefined;
   styleText?: TextStyle | undefined;
 }) => {
@@ -15,7 +16,7 @@ const Countdown = (props: {
   const [formatString, setFormatString] = useState(props.format == undefined ? "{i}:{s}" : props.format);
   const styleMerge: ViewStyle = props.style !== undefined ? { ...props.style } : {};
   const styleTextMerge: TextStyle = props.styleText !== undefined ? { ...props.styleText } : {};
-  const currentMilliseconds = useCountdown(props.from, props.to, running);
+  const currentMilliseconds = useCountdown(props.callback !== undefined ? props.callback : () => {}, props.from, props.to, running);
 
   useEffect(() => setRunning(props.isRunning == undefined ? false : props.isRunning), [props.isRunning]);
 

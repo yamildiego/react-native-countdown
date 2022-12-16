@@ -29,6 +29,7 @@ import Countdown from "yd-react-native-countdown";
 | format    | string      | No        | "{i}:{s}" |
 | style     | ViewStyle   | No        | {}        |
 | styleText | TextStyle   | No        | {}        |
+| callback  | () => void  | No        | () => {}  |
 
 ## format
 

@@ -7,11 +7,11 @@ const useCountdown = (p_callback: () => void, p_milliseconds_from?: number, p_mi
   useEffect(() => {
     const interval = setInterval(() => {
       if (isRunning) {
-        if (currentMilliseconds > millisecondsTo) setCurrentMilliseconds(currentMilliseconds - 1000);
-        else {
+        if (currentMilliseconds - 1000 === millisecondsTo) {
           p_callback();
           clearInterval(interval);
         }
+        if (currentMilliseconds > millisecondsTo) setCurrentMilliseconds(currentMilliseconds - 1000);
       } else clearInterval(interval);
     }, 1000);
 

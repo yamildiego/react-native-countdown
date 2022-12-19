@@ -21,15 +21,17 @@ import Countdown from "yd-react-native-countdown";
 
 ## React Native Countdown Props
 
-| Props     | Description | isRequire | default   |
-| --------- | ----------- | --------- | --------- |
-| from      | number      | No        | 10000     |
-| to        | number      | No        | 0         |
-| isRunning | boolean     | No        | false     |
-| format    | string      | No        | "{i}:{s}" |
-| style     | ViewStyle   | No        | {}        |
-| styleText | TextStyle   | No        | {}        |
-| callback  | () => void  | No        | () => {}  |
+| Props                 | Description | isRequire | default   |
+| --------------------- | ----------- | --------- | --------- |
+| from                  | number      | No        | 10000     |
+| to                    | number      | No        | 0         |
+| isRunning             | boolean     | No        | false     |
+| format                | string      | No        | "{i}:{s}" |
+| style                 | ViewStyle   | No        | {}        |
+| styleText             | TextStyle   | No        | {}        |
+| callback              | () => void  | No        | () => {}  |
+| beatEffectAtTheEnd    | boolean     | No        | false     |
+| lastSecondsWithEffect | number      | No        | 10000     |
 
 ## format
 

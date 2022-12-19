@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-const useCountdown = (p_callback: () => void, p_milliseconds_from?: number, p_milliseconds_to?: number, isRunning?: boolean): number => {
-  const [currentMilliseconds, setCurrentMilliseconds] = useState(p_milliseconds_from == undefined ? 10000 : p_milliseconds_from);
-  const [millisecondsTo, setMillisecondsTo] = useState(p_milliseconds_to == undefined ? 0 : p_milliseconds_to);
+const useCountdown = (p_callback: () => void, p_milliseconds_from: number, p_milliseconds_to: number, isRunning: boolean): number => {
+  const [currentMilliseconds, setCurrentMilliseconds] = useState(p_milliseconds_from);
+  const [millisecondsTo, setMillisecondsTo] = useState(p_milliseconds_to);
 
   useEffect(() => {
     const interval = setInterval(() => {

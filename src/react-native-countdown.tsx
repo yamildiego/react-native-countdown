@@ -29,13 +29,18 @@ const Countdown = (props: {
     Animated.loop(
       Animated.sequence([
         Animated.timing(slideUpValue, {
+          toValue: 1,
+          duration: 100,
+          useNativeDriver: false,
+        }),
+        Animated.timing(slideUpValue, {
           toValue: 0,
-          duration: 500,
+          duration: 100,
           useNativeDriver: false,
         }),
         Animated.timing(slideUpValue, {
           toValue: 1,
-          duration: 500,
+          duration: 100,
           useNativeDriver: false,
         }),
         Animated.timing(slideUpValue, {
@@ -48,9 +53,9 @@ const Countdown = (props: {
   }
 
   return (
-    <>
+    <View style={[styles.container, styleMerge]}>
       {props.beatEffectAtTheEnd && lastSecondsWEffect >= currentMilliseconds && (
-        <Animated.View
+        <Animated.Text
           style={{
             transform: [
               {
@@ -63,15 +68,13 @@ const Countdown = (props: {
           }}
         >
           <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
-        </Animated.View>
+        </Animated.Text>
       )}
 
       {(props.beatEffectAtTheEnd !== true || lastSecondsWEffect < currentMilliseconds) && (
-        <View style={[styles.container, styleMerge]}>
-          <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
-        </View>
+        <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
       )}
-    </>
+    </View>
   );
 };
 

@@ -19,13 +19,13 @@ const Countdown = (props: {
   const styleMerge: ViewStyle = props.style !== undefined ? { ...props.style } : {};
   const styleTextMerge: TextStyle = props.styleText !== undefined ? { ...props.styleText } : {};
   const currentMilliseconds = useCountdown(props.callback !== undefined ? props.callback : () => {}, props.from, props.to, running);
-  const lastSecondsWEffect = lastSecondsWithEffect !== undefined ? lastSecondsWithEffect : 10000;
+  const lastSecondsWEffect = props.lastSecondsWithEffect !== undefined ? props.lastSecondsWithEffect : 10000;
 
   useEffect(() => setRunning(props.isRunning == undefined ? false : props.isRunning), [props.isRunning]);
 
   const slideUpValue = new Animated.Value(0);
 
-  if (beatEffectAtTheEnd) {
+  if (props.beatEffectAtTheEnd) {
     Animated.loop(
       Animated.sequence([
         Animated.timing(slideUpValue, {
@@ -49,7 +49,7 @@ const Countdown = (props: {
 
   return (
     <>
-      {beatEffectAtTheEnd && lastSecondsWEffect >= currentMilliseconds && (
+      {props.beatEffectAtTheEnd && lastSecondsWEffect >= currentMilliseconds && (
         <Animated.View
           style={{
             transform: [
@@ -66,7 +66,7 @@ const Countdown = (props: {
         </Animated.View>
       )}
 
-      {(beatEffectAtTheEnd !== true || lastSecondsWEffect < currentMilliseconds) && (
+      {(props.beatEffectAtTheEnd !== true || lastSecondsWEffect < currentMilliseconds) && (
         <View style={[styles.container, styleMerge]}>
           <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
         </View>

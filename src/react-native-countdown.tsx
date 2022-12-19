@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, ViewStyle, TextStyle, Animated } from "react-native";
 import TimeLib from "yd-time-lib";
 import { useCountdown } from "./useCountdown ";
@@ -24,30 +24,34 @@ const Countdown = (props: {
   const styleMerge: ViewStyle = props.style !== undefined ? { ...props.style } : {};
   const styleTextMerge: TextStyle = props.styleText !== undefined ? { ...props.styleText } : {};
 
-  useEffect(() => setRunning(props.isRunning == undefined ? false : props.isRunning), [props.isRunning]);
+  const slideUpValue = useRef(new Animated.Value(0));
 
-  const slideUpValue = new Animated.Value(0);
-
-  if (beatEffectAtTheEnd) {
+  const anim = useRef(
     Animated.loop(
       Animated.sequence([
-        Animated.timing(slideUpValue, { toValue: 1, duration: 100, useNativeDriver: false }),
-        Animated.timing(slideUpValue, { toValue: 0, duration: 100, useNativeDriver: false }),
-        Animated.timing(slideUpValue, { toValue: 1, duration: 100, useNativeDriver: false }),
-        Animated.timing(slideUpValue, { toValue: 0, duration: 500, useNativeDriver: false }),
+        Animated.timing(slideUpValue.current, { toValue: 1, duration: 100, useNativeDriver: false }),
+        Animated.timing(slideUpValue.current, { toValue: 0, duration: 100, useNativeDriver: false }),
+        Animated.timing(slideUpValue.current, { toValue: 1, duration: 100, useNativeDriver: false }),
+        Animated.timing(slideUpValue.current, { toValue: 0, duration: 500, useNativeDriver: false }),
       ])
-    ).start();
-  }
+    )
+  ).current;
+
+  anim.start();
+
+  useEffect(() => {
+    setRunning(props.isRunning == true ? true : false);
+  }, [props.isRunning]);
 
   return (
     <View style={[styles.container, styleMerge]}>
-      {beatEffectAtTheEnd && lastSecondsWEffect >= currentMilliseconds && currentMilliseconds > countdownTo && (
-        <Animated.Text style={{ transform: [{ scale: slideUpValue.interpolate({ inputRange: [0, 1], outputRange: [1, 1.2] }) }] }}>
+      {beatEffectAtTheEnd && lastSecondsWEffect >= currentMilliseconds && currentMilliseconds > countdownTo && running && (
+        <Animated.Text style={{ transform: [{ scale: slideUpValue.current.interpolate({ inputRange: [0, 1], outputRange: [1, 1.2] }) }] }}>
           <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
         </Animated.Text>
       )}
 
-      {(beatEffectAtTheEnd !== true || lastSecondsWEffect < currentMilliseconds || currentMilliseconds <= countdownTo) && (
+      {(beatEffectAtTheEnd !== true || lastSecondsWEffect < currentMilliseconds || currentMilliseconds <= countdownTo || !running) && (
         <Text style={[styles.text, styleTextMerge]}>{new TimeLib(currentMilliseconds).format(formatString)}</Text>
       )}
     </View>

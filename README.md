@@ -1,5 +1,7 @@
 # React Native Countdown
 
+[![npm](https://img.shields.io/npm/v/yd-react-native-countdown)](https://www.npmjs.com/package/yd-react-native-countdown)
+
 React Native Countdown is a component that displays countdown for React Native.
 
 ## Installation

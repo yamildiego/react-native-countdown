@@ -1,6 +1,6 @@
 {
   "name": "yd-react-native-countdown",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "scripts": {
     "build": "tsc --project tsconfig.json && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",

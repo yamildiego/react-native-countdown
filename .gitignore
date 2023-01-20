@@ -5,3 +5,4 @@ dist
 react-native-countdown/*
 !react-native-countdown/package.json
 package-lock.json
+react-native-countdown

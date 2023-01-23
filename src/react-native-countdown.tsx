@@ -41,7 +41,7 @@ const Countdown = (props: {
 
   useEffect(() => {
     setRunning(props.isRunning == true ? true : false);
-    setCountdownFrom(props.from);
+    setCountdownFrom(from == undefined ? 10000 : from);
   }, [props.isRunning, props.from]);
 
   return (

@@ -1,13 +1,13 @@
 {
   "name": "yd-react-native-countdown",
   "description": "React Native Countdown component",
-  "version": "2.0.14",
+  "version": "2.0.16",
   "repository": "github:yamildiego/react-native-countdown",
   "main": "./react-native-countdown/react-native-countdown.js",
   "types": "./react-native-countdown/react-native-countdown.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.json && copy README.md C:\\project\\react-native-countdown\\react-native-countdown",
-    "deploy": "npm publish --access=public",
+    "deploy": "npm run build && npm publish --access=public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {

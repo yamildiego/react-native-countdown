@@ -1,7 +1,7 @@
 {
   "name": "yd-react-native-countdown",
   "description": "React Native Countdown component",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "repository": "github:yamildiego/react-native-countdown",
   "main": "./react-native-countdown/react-native-countdown.js",
   "types": "./react-native-countdown/react-native-countdown.d.ts",

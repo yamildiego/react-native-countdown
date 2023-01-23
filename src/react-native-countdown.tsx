@@ -41,7 +41,8 @@ const Countdown = (props: {
 
   useEffect(() => {
     setRunning(props.isRunning == true ? true : false);
-  }, [props.isRunning]);
+    setCountdownFrom(props.from);
+  }, [props.isRunning, props.from]);
 
   return (
     <View style={[styles.container, styleMerge]}>
